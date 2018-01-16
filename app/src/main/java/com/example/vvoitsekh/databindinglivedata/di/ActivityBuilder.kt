@@ -2,8 +2,6 @@ package com.example.vvoitsekh.databindinglivedata.di
 
 import com.example.vvoitsekh.databindinglivedata.BooksBorrowedByUserActivity
 import dagger.Module
-import dagger.Subcomponent
-import dagger.android.AndroidInjector
 import dagger.android.ContributesAndroidInjector
 
 /**
@@ -12,6 +10,6 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class ActivityBuilder {
 
-    @ContributesAndroidInjector(modules = arrayOf(ActivityModule::class))
+    @ContributesAndroidInjector
     abstract fun bindActivity(): BooksBorrowedByUserActivity
 }

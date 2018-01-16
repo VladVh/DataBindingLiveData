@@ -28,10 +28,10 @@ interface UserDao {
     @Query("select * from user")
     fun loadAllUsers(): List<User>
 
-    @Query("select * from user where id = :arg0")
+    @Query("select * from user where id = :id")
     fun loadUserById(id: Int): User
 
-    @Query("select * from user where name = :arg0 and lastName = :arg1")
+    @Query("select * from user where name = :firstName and lastName = :lastName")
     fun findUserByNameAndLastName(firstName: String, lastName: String): List<User>
 
     @Insert(onConflict = IGNORE)
@@ -40,7 +40,7 @@ interface UserDao {
     @Delete
     fun deleteUser(user: User)
 
-    @Query("delete from user where name like :arg0 OR lastName like :arg0")
+    @Query("delete from user where name like :badName OR lastName like :badName")
     fun deleteUsersByName(badName: String): Int
 
     @Insert(onConflict = IGNORE)
@@ -49,10 +49,10 @@ interface UserDao {
     @Delete
     fun deleteUsers(user1: User, user2: User)
 
-    @Query("SELECT * FROM User WHERE age == :arg0")
+    @Query("SELECT * FROM User WHERE age == :age")
     fun findUsersYoungerThan(age: Int): List<User>
 
-    @Query("SELECT * FROM User WHERE age < :arg0")
+    @Query("SELECT * FROM User WHERE age < :age")
     fun findUsersYoungerThanSolution(age: Int): List<User>
 
     @Query("DELETE FROM User")

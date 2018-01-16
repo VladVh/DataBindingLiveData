@@ -1,8 +1,12 @@
 package com.example.vvoitsekh.databindinglivedata.di
 
+import com.example.vvoitsekh.databindinglivedata.BooksBorrowedByUserActivity
+import com.example.vvoitsekh.databindinglivedata.BooksBorrowedByUserViewModel
+import com.example.vvoitsekh.databindinglivedata.ViewModelFactory
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
-
+import javax.inject.Singleton
 
 
 /**
@@ -11,6 +15,9 @@ import dagger.Provides
 @Module
 class ActivityModule {
 
+    @Singleton
+    @Provides
+    fun provideViewModel(factory: ViewModelFactory) = factory.create(BooksBorrowedByUserViewModel::class.java)
 //    @Provides
 //    fun provideMainView(mainActivity: MainActivity): MainView {
 //        return mainActivity

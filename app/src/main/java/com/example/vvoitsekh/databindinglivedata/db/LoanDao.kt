@@ -41,8 +41,8 @@ interface LoanDao {
             "FROM Book " +
             "INNER JOIN Loan ON Loan.book_id = Book.id " +
             "INNER JOIN User on User.id = Loan.user_id " +
-            "WHERE User.name LIKE :arg0 " +
-            "AND Loan.endTime > :arg1 ")
+            "WHERE User.name LIKE :userName " +
+            "AND Loan.endTime > :after ")
     fun findLoansByNameAfter(userName: String, after: Date): LiveData<List<LoanWithUserAndBook>>
 
     @Insert
