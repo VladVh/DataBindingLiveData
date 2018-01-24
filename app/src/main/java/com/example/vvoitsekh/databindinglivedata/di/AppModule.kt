@@ -11,14 +11,11 @@ import javax.inject.Singleton
 /**
  * Created by v.voitsekh on 12.01.2018.
  */
-@Module
+@Module(includes = arrayOf(ViewModelModule::class))
 class AppModule {
 
 //    @Singleton
 //    @Provides
 //    fun provideContext(application: Application) = application
 
-    @Singleton
-    @Provides
-    fun provideViewModelFactory(application: Application) = ViewModelFactory(application)
 }

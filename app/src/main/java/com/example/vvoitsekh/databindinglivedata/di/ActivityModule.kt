@@ -15,9 +15,9 @@ import javax.inject.Singleton
 @Module
 class ActivityModule {
 
-    @Singleton
-    @Provides
-    fun provideViewModel(factory: ViewModelFactory) = factory.create(BooksBorrowedByUserViewModel::class.java)
+//    @Singleton
+//    @Provides
+//    fun provideViewModel(factory: ViewModelFactory) = factory.create(BooksBorrowedByUserViewModel::class.java)
 //    @Provides
 //    fun provideMainView(mainActivity: MainActivity): MainView {
 //        return mainActivity

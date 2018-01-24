@@ -25,9 +25,11 @@ import com.example.vvoitsekh.databindinglivedata.db.AppDatabase
 import com.example.vvoitsekh.databindinglivedata.db.Book
 import com.example.vvoitsekh.databindinglivedata.db.Loan
 import com.example.vvoitsekh.databindinglivedata.utils.DatabaseInitializer
+import javax.inject.Inject
+import javax.inject.Singleton
 
-
-class BooksBorrowedByUserViewModel(application: Application) : AndroidViewModel(application) {
+@Singleton
+class BooksBorrowedByUserViewModel @Inject constructor(application: Application) : AndroidViewModel(application) {
 
     val books: LiveData<List<Book>>
 
