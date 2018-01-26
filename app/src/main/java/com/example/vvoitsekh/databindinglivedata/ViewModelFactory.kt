@@ -19,7 +19,7 @@ class ViewModelFactory @Inject constructor(private val creators: Map<Class<out V
 //    override fun <T : ViewModel> create(modelClass: Class<T>) =
 //            with(modelClass) {
 //                when {
-//                    isAssignableFrom(BooksBorrowedByUserViewModel::class.java) -> BooksBorrowedByUserViewModel(app)
+//                    isAssignableFrom(TasksViewModel::class.java) -> TasksViewModel(app)
 //                    else ->
 //                            throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
 //                }

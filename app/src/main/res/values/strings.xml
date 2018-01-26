@@ -15,6 +15,7 @@
   -->
 
 <resources>
+    <string name="no_tasks">There are no tasks</string>
     <string name="app_name">Persistence codelab</string>
     <string name="books_borrowed_by_user">Books borrowed by Mike:</string>
     <string name="refresh">Refresh</string>
