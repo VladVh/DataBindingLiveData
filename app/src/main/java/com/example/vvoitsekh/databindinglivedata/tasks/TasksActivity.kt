@@ -28,6 +28,7 @@ import com.example.vvoitsekh.databindinglivedata.R
 import com.example.vvoitsekh.databindinglivedata.databinding.DbActivityBinding
 
 import com.example.vvoitsekh.databindinglivedata.dbnew.Task
+import com.example.vvoitsekh.databindinglivedata.taskdetail.TaskDetailActivity
 import dagger.android.AndroidInjection
 import javax.inject.Inject
 
@@ -60,13 +61,23 @@ class TasksActivity : AppCompatActivity() {
             }
             //mBinding.executePendingBindings()
         })
+
+        mViewModel.openTaskEvent.observe(this, Observer {
+            taskId ->  if (taskId != null)
+            openTaskDetails(taskId)
+        })
     }
 
     fun onRefreshBtClicked(view: View) {
         //mViewModel.createDb();
         mViewModel.addBook()
-        var intent = Intent(this, TasksActivity::class.java)
-        startActivity(intent)
-        this.finish()
+    }
+
+    fun openTaskDetails(taskId: String) {
+        val intent = Intent(this, TaskDetailActivity::class.java).apply {
+            putExtra(TaskDetailActivity.EXTRA_TASK_ID, taskId)
+        }
+        startActivityForResult(intent, 1)
+
     }
 }

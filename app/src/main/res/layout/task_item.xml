@@ -4,14 +4,32 @@
         <variable
             name="task"
             type="com.example.vvoitsekh.databindinglivedata.dbnew.Task"/>
+        <variable
+            name="listener"
+            type="com.example.vvoitsekh.databindinglivedata.tasks.TaskItemUserActionsListener"/>
     </data>
-    <RelativeLayout
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="80dp">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:onClick="@{() -> listener.onTaskClicked(task)}"
+        android:layout_margin="1dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:padding="10dp"
             android:text="@{task.toString()}"/>
-    </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:onClick="@{() -> listener.onTaskClicked(task)}">-->
+
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:text="@{task.toString()}"/>-->
+    <!--</RelativeLayout>-->
 </layout>

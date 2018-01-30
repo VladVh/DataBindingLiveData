@@ -2,6 +2,7 @@ package com.example.vvoitsekh.databindinglivedata.tasks
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import com.example.vvoitsekh.databindinglivedata.databinding.TaskItemBinding
 import com.example.vvoitsekh.databindinglivedata.dbnew.Task
@@ -22,8 +23,20 @@ class TasksRecyclerAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val itemBinding: TaskItemBinding? = TaskItemBinding.inflate(layoutInflater, parent, false)
-        return TaskViewHolder(itemBinding!!)
+        val itemListener = object : TaskItemUserActionsListener {
+            override fun onCompleteChanged(task: Task, view: View) {
+
+            }
+
+            override fun onTaskClicked(task: Task) {
+                tasksViewModel.openTaskEvent.value = task.id
+            }
+
+        }
+        return TaskViewHolder(itemBinding!!, itemListener)
     }
+
+
 
     override fun getItemCount(): Int {
         return tasks.count()

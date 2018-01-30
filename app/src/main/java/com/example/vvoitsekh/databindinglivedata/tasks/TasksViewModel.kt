@@ -21,6 +21,7 @@ import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LiveData
 import com.example.vvoitsekh.databindinglivedata.dbnew.Task
 import com.example.vvoitsekh.databindinglivedata.dbnew.TasksDao
+import com.example.vvoitsekh.databindinglivedata.utils.SingleLiveEvent
 
 
 import javax.inject.Inject
@@ -30,6 +31,7 @@ import javax.inject.Singleton
 class TasksViewModel @Inject constructor(application: Application, tasksDao: TasksDao) : AndroidViewModel(application) {
 
     val tasks: LiveData<List<Task>>
+    internal val openTaskEvent = SingleLiveEvent<String>()
 
     var mTasksDao: TasksDao = tasksDao
 
@@ -44,7 +46,7 @@ class TasksViewModel @Inject constructor(application: Application, tasksDao: Tas
 
     fun addBook() {
         var task = Task()
-        task.title = "test";
+        task.title = "test"
         mTasksDao.insertTask(task)
     }
 }
