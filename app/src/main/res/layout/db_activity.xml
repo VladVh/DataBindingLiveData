@@ -13,13 +13,16 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
             type="com.example.vvoitsekh.databindinglivedata.tasks.TasksViewModel"/>
     </data>
-    <RelativeLayout
+    <android.support.design.widget.CoordinatorLayout
         android:id="@+id/activity_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -31,13 +34,17 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:visibility="@{viewModel.tasks != null ? View.VISIBLE : View.GONE}"
+            app:items="@{viewModel.tasks}"/>
         <Button
             android:id="@+id/button"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/recyclerView"
             android:onClick="@{() -> viewModel.addBook()}"
+            app:layout_anchor="@id/recyclerView"
+            app:layout_anchorGravity="bottom|right|end"
             android:text="@string/refresh" />
 
 
@@ -76,6 +83,6 @@
 
         <!--</ScrollView>-->
 
-    </RelativeLayout>
+    </android.support.design.widget.CoordinatorLayout>
 </layout>
 

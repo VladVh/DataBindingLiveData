@@ -28,6 +28,7 @@ import com.example.vvoitsekh.databindinglivedata.R
 import com.example.vvoitsekh.databindinglivedata.databinding.DbActivityBinding
 
 import com.example.vvoitsekh.databindinglivedata.dbnew.Task
+import com.example.vvoitsekh.databindinglivedata.edit.AddEditTaskActivity
 import com.example.vvoitsekh.databindinglivedata.taskdetail.TaskDetailActivity
 import dagger.android.AndroidInjection
 import javax.inject.Inject
@@ -51,26 +52,21 @@ class TasksActivity : AppCompatActivity() {
         val adapter = TasksRecyclerAdapter(emptyList(), mViewModel)
         mBinding.recyclerView.adapter = adapter
         mBinding.recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        // Get a reference to the ViewModel for this screen.
-        //mViewModel = ViewModelProviders.of(this).get(TasksViewModel::class.java)
-        // Update the UI whenever there's a change in the ViewModel's data.
-        //subscribeUiBooks()
-        mViewModel.tasks.observe(this, Observer<List<Task>> { tasks ->
-            if (tasks != null) {
-                adapter.replaceData(tasks)
-            }
-            //mBinding.executePendingBindings()
-        })
 
         mViewModel.openTaskEvent.observe(this, Observer {
             taskId ->  if (taskId != null)
             openTaskDetails(taskId)
         })
+
+        mViewModel.newTaskEvent.observe(this, Observer {
+
+        })
+        mViewModel.loadTasks()
     }
 
-    fun onRefreshBtClicked(view: View) {
-        //mViewModel.createDb();
-        mViewModel.addBook()
+    fun addNewTask() {
+        val intent = Intent(this, AddEditTaskActivity::class.java)
+        startActivityForResult(intent, 1)
     }
 
     fun openTaskDetails(taskId: String) {

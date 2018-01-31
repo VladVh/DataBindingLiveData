@@ -1,5 +1,6 @@
 package com.example.vvoitsekh.databindinglivedata.di
 
+import com.example.vvoitsekh.databindinglivedata.edit.AddEditTaskActivity
 import com.example.vvoitsekh.databindinglivedata.taskdetail.TaskDetailActivity
 import com.example.vvoitsekh.databindinglivedata.tasks.TasksActivity
 import dagger.Module
@@ -17,5 +18,8 @@ abstract class ActivityBuilder {
     abstract fun bindActivity(): TasksActivity
 
     @ContributesAndroidInjector
-    abstract fun bindDetailActivity(): TaskDetailActivity
+    abstract fun bindTaskDetailActivity(): TaskDetailActivity
+
+    @ContributesAndroidInjector
+    abstract fun bindAddEditTaskActivity(): AddEditTaskActivity
 }

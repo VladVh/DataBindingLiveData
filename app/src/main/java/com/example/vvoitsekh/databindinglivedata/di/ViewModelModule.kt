@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 import com.example.vvoitsekh.databindinglivedata.tasks.TasksViewModel
 import com.example.vvoitsekh.databindinglivedata.ViewModelFactory
+import com.example.vvoitsekh.databindinglivedata.edit.AddEditTaskViewModel
 import com.example.vvoitsekh.databindinglivedata.taskdetail.TaskDetailViewModel
 import dagger.Binds
 import dagger.Module
@@ -22,7 +23,12 @@ abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(TaskDetailViewModel::class)
-    abstract fun bindDetailViewModel(viewModel: TaskDetailViewModel): ViewModel
+    abstract fun bindTaskDetailViewModel(viewModel: TaskDetailViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(AddEditTaskViewModel::class)
+    abstract fun bindAddEditTaskViewModel(viewModel: AddEditTaskViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.NewInstanceFactory

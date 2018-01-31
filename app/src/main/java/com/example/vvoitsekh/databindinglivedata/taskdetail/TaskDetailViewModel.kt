@@ -5,6 +5,7 @@ import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LiveData
 import com.example.vvoitsekh.databindinglivedata.dbnew.Task
 import com.example.vvoitsekh.databindinglivedata.dbnew.TasksDao
+import com.example.vvoitsekh.databindinglivedata.utils.SingleLiveEvent
 import javax.inject.Inject
 
 /**
@@ -15,9 +16,15 @@ class TaskDetailViewModel @Inject constructor(application: Application, tasksDao
 
     var mTasksDao: TasksDao = tasksDao
 
+    val editTaskCommand = SingleLiveEvent<Void>()
+
     fun start(taskId: String?) {
         taskId?.let {
             task = mTasksDao.getTaskById(taskId)
         }
+    }
+
+    fun editTask() {
+        editTaskCommand.call()
     }
 }

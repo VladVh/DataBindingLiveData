@@ -7,10 +7,19 @@
     </data>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="10dp"
             android:text="@{viewmodel.task.toString()}"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewmodel.editTask()}"
+            android:text="@string/detail_edit"/>
     </LinearLayout>
 </layout>
